@@ -1,0 +1,9 @@
+services:
+	- App\Router\RouterFactory::createRouter
+	cache.storage: Nette\Caching\Storages\DevNullStorage
+	
+search:
+	-	in: %appDir%
+		classes:
+			- *Factory
+			- *Facade

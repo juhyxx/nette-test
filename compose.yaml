@@ -1,0 +1,32 @@
+services:
+  web-project:
+    build: .
+    command: apache2-foreground
+    ports:
+      - 8080:80
+    volumes:
+      - ./web:/var/www/html/
+
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: password
+    # volumes:
+    #   - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - 3306:3306
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+      MYSQL_ROOT_PASSWORD: password
+    restart: always
+    ports:
+      - 8081:80
