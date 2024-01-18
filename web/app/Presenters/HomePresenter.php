@@ -28,7 +28,7 @@ final class HomePresenter extends Nette\Application\UI\Presenter
 			$value = $value / $currencies[$targetCurrency];
 			
 			#return  $sourceCurrency . "->" . $targetCurrency . ": ". round($value, 2);
-			return   $targetCurrency . ": ". round($value, 2);
+			return   $targetCurrency . " ". round($value, 2);
 		});
 	}
 
@@ -37,4 +37,5 @@ final class HomePresenter extends Nette\Application\UI\Presenter
 		$this->template->orders = $this->facade->getOrders();
 		$this->template->currency = $this->facade->getCurrencyList();
 	}
+	
 }

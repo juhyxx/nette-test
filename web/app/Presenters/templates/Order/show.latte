@@ -1,15 +1,15 @@
 {block content}
     <h1>Order detail</h1>
    		{foreach $orders as $order}
-            <div>Id: {$order->id}</div>
-            <div>Name: {$order->name}</div>
+            <div><b>Id</b>: {$order->id}</div>
+            <div><b>Name</b>: {$order->name}</div>
             <div>
                 <div>{$order->price | currency: "CZK", $order->currency }</div>
                 <div>{$order->price| currency: "USD", $order->currency }</div>
                 <div>{$order->price| currency: "EUR", $order->currency }</div>
             </div>
-            <div>Resover: {$order->resolver}</div>
-            <div>created_at: {$order->created_at}</div>
-            <div>updated_at: {$order->updated_at}</div>
+            <div><b>Resover</b>: {$order->resolver}</div>
+            <div><b>created_at</b>: {$order->created_at}</div>
+            <div><b>updated_at</b>: {$order->updated_at}</div>
 		{/foreach}
 {/block}
