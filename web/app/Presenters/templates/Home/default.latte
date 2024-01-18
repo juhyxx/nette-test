@@ -1,11 +1,47 @@
-{* This is the welcome page, you can delete it *}
-
 {block content}
-<div id="banner">
-	<h1 n:block=title>Congratulations!</h1>
-</div>
+	<table class="order" >
+		<thead>
+			<tr>
+				<th>Nr.</th>
+				<th>Name</th>
+				<th>Invoicing</th>
+				<th>Price</th>
+				<th>Resolver</th>
+				<th>Created</th>
+				<th>Updated</th>
+			</tr>
+		</thead>
+		{foreach $orders as $order}
+			<tr>
+				<td>{$order->id}</td>
+				<td>{$order->name}</td>
+				<td><input type="checkbox"></td>
+				<td>
+					
+					<div>{$order->price | currency: "CZK", $order->currency }</div>
+					<div>{$order->price| currency: "USD", $order->currency }</div>
+					<div>{$order->price| currency: "EUR", $order->currency }</div>
+				</td>
+				<td>{$order->resolver}</td>
+				<td>{$order->created_at|date:'d.m.Y'}</td>
+				<td>{$order->updated_at|date:'d.m.Y'}</td>
+				<td><a href="{link Order:show $order->id}">Detail</a></td>
+			</tr>
+		{/foreach}
+	</table>
+	<br>
+	<table>
+		<caption>Today</caption>
+			<tr>
+			<th>USD</th>
+			<th>EUR</th>
+		<tr>
+		<tr>
+			<td>{$currency["USD"]|number:3}</td>
+			<td>{$currency["EUR"]|number:3}</td>
+		<tr>
+	</table>
 
-<div id="content">
-	Maká to
-</div>
+
+{/block}
 
